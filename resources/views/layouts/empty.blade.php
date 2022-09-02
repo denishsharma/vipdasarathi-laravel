@@ -6,15 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
 
+    @livewireStyles
     @vite(['resources/css/app.css'])
 </head>
-<body>
+<body x-data>
     @yield('body')
 
 
     @livewireScripts
     @wireUiScripts
-    @vite(['resources/s/app.js'])
+    @vite('resources/js/app.js')
     @livewire('livewire-ui-modal')
 </body>
 </html>
