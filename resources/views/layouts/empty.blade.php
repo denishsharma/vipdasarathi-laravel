@@ -14,7 +14,7 @@
 
     @livewireScripts
     @wireUiScripts
-    @vite(['resources/js/app.js'])
+    @vite('resources/js/app.js')
     @livewire('livewire-ui-modal')
 </body>
 </html>
