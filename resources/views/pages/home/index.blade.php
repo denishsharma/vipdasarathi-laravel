@@ -1,9 +1,17 @@
-@extends('layouts.empty', ['title' => 'Home'])
+@extends('layouts.general', ['title' => 'Home', 'activeNav' => 'home'])
 
-@section('body')
-    <div class="flex justify-center items-center h-screen">
-        <div class="w-1/2">
-            <h1 class="text-2xl text-center">Welcome to the home page</h1>
-        </div>
-    </div>
+@section('attached-navbar')
+    <x-navigation.attached-navbar>
+        hello
+    </x-navigation.attached-navbar>
+@endsection
+
+@section('content')
+    <x-layout.sidebar-main>
+        <x-slot:sidebar>
+            sidebar
+        </x-slot:sidebar>
+
+        main
+    </x-layout.sidebar-main>
 @endsection
