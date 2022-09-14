@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e89427e36bf553d7878b765e93592f99",
+    "content-hash": "0dc06bfd34294b8457bed36f60cd1a70",
     "packages": [
         {
             "name": "brick/math",
@@ -896,6 +896,64 @@
                 }
             ],
             "time": "2022-08-28T14:45:39+00:00"
+        },
+        {
+            "name": "jaynilsavani/laravel-country-state-city",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jaynilsavani/laravel-country-state-city.git",
+                "reference": "cf71edac5258425a4b8f4ee7b164dde68dc22730"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jaynilsavani/laravel-country-state-city/zipball/cf71edac5258425a4b8f4ee7b164dde68dc22730",
+                "reference": "cf71edac5258425a4b8f4ee7b164dde68dc22730",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JaynilSavani\\CountryStateCity\\CountryStateCityProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JaynilSavani\\CountryStateCity\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jaynilsavani",
+                    "email": "jenilsavani009@gmail.com"
+                }
+            ],
+            "description": "Laravel country, state and city collection.",
+            "keywords": [
+                "city",
+                "country",
+                "laravel",
+                "location",
+                "map",
+                "php",
+                "state",
+                "world"
+            ],
+            "support": {
+                "issues": "https://github.com/jaynilsavani/laravel-country-state-city/issues",
+                "source": "https://github.com/jaynilsavani/laravel-country-state-city/tree/master"
+            },
+            "time": "2022-08-18T23:15:50+00:00"
         },
         {
             "name": "laravel/framework",
@@ -7907,7 +7965,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "jaynilsavani/laravel-country-state-city": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -19,8 +19,8 @@ class Address extends Model {
         'address_line_2',
         'district',
         'city',
-        'state',
-        'country',
+        'state_id',
+        'country_id',
         'zipcode',
         'geo_data',
         'addressable_id',
@@ -29,5 +29,13 @@ class Address extends Model {
 
     public function addressable(): \Illuminate\Database\Eloquent\Relations\MorphTo {
         return $this->morphTo();
+    }
+
+    public function state(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+        return $this->belongsTo(State::class);
+    }
+
+    public function country(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+        return $this->belongsTo(Country::class);
     }
 }
