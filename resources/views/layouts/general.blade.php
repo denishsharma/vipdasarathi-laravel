@@ -1,4 +1,4 @@
-@extends('layouts.empty', ['title' => $title])
+@extends('layouts.empty', ['title' => 'Vipdasarathi - '.$title])
 
 @section('body')
     <div class="grid grid-cols-1 divide-y divide-gray-100">

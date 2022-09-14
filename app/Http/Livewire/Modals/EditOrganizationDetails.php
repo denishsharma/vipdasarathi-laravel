@@ -13,7 +13,7 @@ class EditOrganizationDetails extends ModalComponent {
     public $slug;
     public $description;
 
-    public Organization $organization;
+    public $organization;
 
     protected $rules = [
         'name' => 'required',
@@ -26,6 +26,20 @@ class EditOrganizationDetails extends ModalComponent {
     ];
 
     public function updateOrganization() {
+        $this->validate([
+            'name' => 'required',
+            'level' => 'required',
+        ]);
+
+        $organization = Organization::whereSlug($this->organization->slug)->firstOrFail();
+        $organization->update([
+            'name' => $this->name,
+            'level' => $this->level,
+            'description' => $this->description,
+        ]);
+
+        $this->emit('organizationUpdated', $organization);
+        $this->emitTo('tables.organization.organization-setting-table', 'refreshTable');
         $this->closeModal();
     }
 
@@ -41,13 +55,15 @@ class EditOrganizationDetails extends ModalComponent {
         ]);
 
         $this->emit('organizationAdded', $organization);
+        $this->emit('refreshOrganizationTable');
         $this->closeModal();
     }
 
-    public function mount(string $actionType, Organization $organization = null) {
+    public function mount(string $actionType, Organization $organization) {
         if ($actionType === 'edit') {
             $this->actionType = 'edit';
             $this->organization = $organization;
+
 
             $this->fill([
                 'name' => $organization->name,

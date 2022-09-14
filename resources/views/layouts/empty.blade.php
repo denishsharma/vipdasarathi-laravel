@@ -12,6 +12,9 @@
 <body x-data class="min-h-screen">
     @yield('body')
 
+    <x-notifications />
+    <x-dialog />
+
     @livewireScripts
     @wireUiScripts
     @vite('resources/js/app.js')

@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Modals;
 
 use App\Models\User;
+use WireUi\Traits\Actions;
 use App\Models\Organization;
 use LivewireUI\Modal\ModalComponent;
 
 class EditUserDetails extends ModalComponent {
+    use Actions;
+
     public string $actionType;
 
     public $firstName;
@@ -15,21 +18,57 @@ class EditUserDetails extends ModalComponent {
     public $email;
     public $password;
     public $organization;
+    public $slug;
 
-    public User $user;
+    public $user;
 
     protected $rules = [
         'firstName' => 'required',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:8',
         'organization' => 'required',
+        'slug' => 'required|unique:users',
     ];
 
     public function updateUser() {
+        $this->validate([
+            'firstName' => 'required',
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
+            'password' => 'required|min:8',
+            'organization' => 'required',
+        ]);
+
+        $user = User::whereSlug($this->user->slug)->firstOrFail();
+
+        $userAttributes = [
+            'first_name' => $this->firstName,
+            'last_name' => $this->lastName,
+            'email' => $this->email,
+            'organization_id' => Organization::whereSlug($this->organization)->firstOrFail()->id,
+        ];
+
+        if ($this->password) {
+            $userAttributes['password'] = \Hash::make($this->password);
+        }
+
+        $user->update($userAttributes);
+        $user->user_profile->update([
+            'mobile' => $this->mobile,
+        ]);
+
+        $this->emit('userUpdated', $user);
+        $this->emit('refreshUserTable');
+
+        $this->notification()->success(
+            $title = "User $this->firstName $this->lastName updated",
+            $description = "User with id $user->slug has been updated successfully.",
+        );
+
         $this->closeModal();
     }
 
     public function addUser() {
+        $this->slug = \Str::slug($this->firstName . ' ' . \Str::substr($this->lastName, 0, 1) . ' ' . \Str::random(6));
         $this->validate();
 
         $organization = Organization::whereSlug($this->organization)->firstOrFail();
@@ -40,6 +79,7 @@ class EditUserDetails extends ModalComponent {
             'email' => $this->email,
             'password' => \Hash::make($this->password),
             'organization_id' => $this->organization,
+            'slug' => $this->slug,
         ]);
 
         $user->user_profile()->create([
@@ -47,13 +87,29 @@ class EditUserDetails extends ModalComponent {
         ]);
 
         $this->emit('userAdded', $user);
+        $this->emit('refreshUserTable');
+
+        $this->notification()->success(
+            $title = "User $this->firstName $this->lastName added",
+            $description = "User has been registered successfully and added in the $organization->name organization",
+        );
+
         $this->closeModal();
     }
 
-    public function mount(string $actionType, User $user = null) {
+    public function mount(string $actionType, User $user) {
         if ($actionType === 'edit') {
             $this->actionType = 'edit';
             $this->user = $user;
+
+            $this->fill([
+                'firstName' => $user->first_name,
+                'lastName' => $user->last_name,
+                'mobile' => $user->user_profile->mobile,
+                'email' => $user->email,
+                'organization' => $user->organization->slug,
+                'password' => $user->password,
+            ]);
 
         } else if ($actionType === 'add') {
             $this->actionType = 'add';

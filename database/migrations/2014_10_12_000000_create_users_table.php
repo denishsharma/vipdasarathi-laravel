@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('password');
             $table->string('user_type')->default('general');
             $table->string('status')->default('active');
+            $table->string('slug')->unique()->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
