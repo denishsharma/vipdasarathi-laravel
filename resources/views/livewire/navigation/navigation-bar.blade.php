@@ -11,7 +11,7 @@
                         <a href="{{ route('cases.index') }}" :class="active === 'case' ? 'active-navbar-button' : 'is-navbar-button'">Cases</a>
                         <a href="#" :class="active === 'relief' ? 'active-navbar-button' : 'is-navbar-button'">Relief
                                                                                                                Centres</a>
-                        <a href="#" :class="active === 'team' ? 'active-navbar-button' : 'is-navbar-button'">Teams</a>
+                        <a href="{{ route('teams.index') }}" :class="active === 'team' ? 'active-navbar-button' : 'is-navbar-button'">Teams</a>
                         <a href="#" :class="active === 'volunteer' ? 'active-navbar-button' : 'is-navbar-button'">Volunteers</a>
                         <a href="#" :class="active === 'ticket' ? 'active-navbar-button' : 'is-navbar-button'">Tickets</a>
                         <a href="{{ route('settings.index') }}" :class="active === 'setting' ? 'active-navbar-button' : 'is-navbar-button'">Settings</a>
