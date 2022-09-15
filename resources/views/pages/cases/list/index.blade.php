@@ -5,21 +5,21 @@
         <div>
             <x-navigation.breadcrumb>
                 <x-navigation.breadcrumb.breadcrumb-item :start="true" icon="home" type="link" :href="route('home')" label="Home" />
-                <x-navigation.breadcrumb.breadcrumb-item :href="route('cases.index')" label="Cases" />
+                <x-navigation.breadcrumb.breadcrumb-item type="link" :href="route('cases.index')" label="Cases" />
                 @if (request()->routeIs('cases.index'))
-                    <x-navigation.breadcrumb.breadcrumb-item :href="route('cases.index')" label="All Cases" :active="true" />
+                    <x-navigation.breadcrumb.breadcrumb-item type="link" :href="route('cases.index')" label="All Cases" :active="true" />
                 @elseif (request()->routeIs('cases.index.active'))
-                    <x-navigation.breadcrumb.breadcrumb-item :href="route('cases.index.active')" label="Active Cases" :active="true" />
+                    <x-navigation.breadcrumb.breadcrumb-item type="link" :href="route('cases.index.active')" label="Active Cases" :active="true" />
                 @elseif (request()->routeIs('cases.index.pending'))
-                    <x-navigation.breadcrumb.breadcrumb-item :href="route('cases.index.pending')" label="Pending Cases" :active="true" />
+                    <x-navigation.breadcrumb.breadcrumb-item type="link" :href="route('cases.index.pending')" label="Pending Cases" :active="true" />
                 @elseif (request()->routeIs('cases.index.closed'))
-                    <x-navigation.breadcrumb.breadcrumb-item :href="route('cases.index.closed')" label="Closed Cases" :active="true" />
+                    <x-navigation.breadcrumb.breadcrumb-item type="link" :href="route('cases.index.closed')" label="Closed Cases" :active="true" />
                 @endif
             </x-navigation.breadcrumb>
         </div>
         <div>
             <div class="flex justify-end gap-2">
-                <x-button sm label="Add Case" @click="Livewire.emit('openModal', 'modals.edit-organization-details', {{ json_encode(['actionType' => 'add']) }})" />
+                <x-button sm label="Add Case" @click="Livewire.emit('openModal', 'modals.edit-case-details', {{ json_encode(['actionType' => 'add']) }})" />
             </div>
         </div>
     </x-navigation.attached-navbar>
@@ -39,7 +39,7 @@
         </x-slot:sidebar>
 
         <div class="overflow-x-auto border border-gray-200 rounded-lg soft-scrollbar">
-            <livewire:tables.case.case-list-table heading="{{ $heading }}" description="{{ $description }}" :cases="$cases ?? null" />
+            <livewire:tables.case.case-list-table heading="{{ $heading }}" description="{{ $description }}" :status="$status" :cases="$cases ?? null" />
         </div>
     </x-layout.sidebar-main>
 @endsection

@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/organization/all', [\App\Http\Controllers\OrganizationController::class, 'getAllOrganization'])->name('api.organization.all');
+Route::get('/disaster-type/all', [\App\Http\Controllers\CaseController::class, 'getAllDisasterType'])->name('api.disaster-type.all');
+Route::get('/states/all', [\App\Http\Controllers\AddressController::class, 'getAllState'])->name('api.states.all');

@@ -16,4 +16,8 @@ class SettingController extends Controller {
     public function user() {
         return view('pages.settings.users.index');
     }
+
+    public function disaster_type() {
+        return view('pages.settings.disaster-types.index');
+    }
 }

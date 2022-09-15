@@ -29,6 +29,10 @@ class DisasterCase extends Model {
         return $this->belongsTo(DisasterType::class);
     }
 
+    public function address(): \Illuminate\Database\Eloquent\Relations\MorphOne {
+        return $this->morphOne(Address::class, 'addressable');
+    }
+
     public function priority(): string {
         return match ($this->priority) {
             'low' => 'Low',
