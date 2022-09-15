@@ -120,7 +120,7 @@ class EditUserDetails extends ModalComponent {
             $this->mobile = $faker->numerify('98########');
             $this->email = strtolower($this->firstName . $this->lastName . '@gmail.com');
             $this->password = '12345678';
-            $this->organization = 'ndrf-national';
+            $this->organization = Organization::all()->random()->slug;
         }
     }
 

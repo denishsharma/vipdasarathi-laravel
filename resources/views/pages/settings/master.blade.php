@@ -26,6 +26,10 @@
                     <x-navigation.sidebar.sidebar-item icon="office-building" label="Organizations" :href="route('settings.organization.index')" :active="request()->routeIs('settings.organization.index')" />
                     <x-navigation.sidebar.sidebar-item icon="user" label="Users" :href="route('settings.user.index')" :active="request()->routeIs('settings.user.index')" />
                 </x-navigation.sidebar.sidebar-group>
+                <x-navigation.sidebar.sidebar-group label="Master">
+                    <x-navigation.sidebar.sidebar-item icon="collection" label="Disaster Types" :href="route('settings.disaster-type.index')" :active="request()->routeIs('settings.disaster-type.index')" />
+                    <x-navigation.sidebar.sidebar-item icon="collection" label="Team Types" :href="route('settings.team-type.index')" :active="request()->routeIs('settings.team-type.index')" />
+                </x-navigation.sidebar.sidebar-group>
             </x-navigation.sidebar-wrapper>
         </x-slot:sidebar>
 

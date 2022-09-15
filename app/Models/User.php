@@ -47,11 +47,23 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
+    public function user_type(): string {
+        return match ($this->user_type) {
+            'volunteer' => 'Volunteer',
+            'general' => 'Regular',
+            default => 'Unknown',
+        };
+    }
+
     public function organization(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
         return $this->belongsTo(Organization::class);
     }
 
     public function user_profile(): \Illuminate\Database\Eloquent\Relations\HasOne {
         return $this->hasOne(UserProfile::class);
+    }
+
+    public function teams(): \Illuminate\Database\Eloquent\Relations\BelongsToMany {
+        return $this->belongsToMany(Team::class);
     }
 }

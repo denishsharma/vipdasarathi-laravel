@@ -8,10 +8,10 @@
                 <div class="hidden sm:block sm:ml-6 select-none">
                     <div class="flex space-x-2" x-data="{ active: @entangle('active') }">
                         <a href="{{ route('home') }}" :class="active === 'home' ? 'active-navbar-button' : 'is-navbar-button'">Home</a>
-                        <a href="#" :class="active === 'case' ? 'active-navbar-button' : 'is-navbar-button'">Cases</a>
+                        <a href="{{ route('cases.index') }}" :class="active === 'case' ? 'active-navbar-button' : 'is-navbar-button'">Cases</a>
                         <a href="#" :class="active === 'relief' ? 'active-navbar-button' : 'is-navbar-button'">Relief
                                                                                                                Centres</a>
-                        <a href="#" :class="active === 'team' ? 'active-navbar-button' : 'is-navbar-button'">Teams</a>
+                        <a href="{{ route('teams.index') }}" :class="active === 'team' ? 'active-navbar-button' : 'is-navbar-button'">Teams</a>
                         <a href="#" :class="active === 'volunteer' ? 'active-navbar-button' : 'is-navbar-button'">Volunteers</a>
                         <a href="#" :class="active === 'ticket' ? 'active-navbar-button' : 'is-navbar-button'">Tickets</a>
                         <a href="{{ route('settings.index') }}" :class="active === 'setting' ? 'active-navbar-button' : 'is-navbar-button'">Settings</a>
