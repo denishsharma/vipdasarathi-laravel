@@ -49,4 +49,12 @@ class DisasterCase extends Model {
             'closed' => 'Closed',
         };
     }
+
+    public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(Task::class);
+    }
+
+    public function teams(): \Illuminate\Database\Eloquent\Relations\BelongsToMany {
+        return $this->belongsToMany(Team::class);
+    }
 }

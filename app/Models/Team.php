@@ -37,4 +37,12 @@ class Team extends Model {
     public function users(): \Illuminate\Database\Eloquent\Relations\BelongsToMany {
         return $this->belongsToMany(User::class);
     }
+
+    public function tasks(): \Illuminate\Database\Eloquent\Relations\BelongsToMany {
+        return $this->belongsToMany(Task::class);
+    }
+
+    public function cases(): \Illuminate\Database\Eloquent\Relations\BelongsToMany {
+        return $this->belongsToMany(DisasterCase::class);
+    }
 }

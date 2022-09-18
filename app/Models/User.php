@@ -55,6 +55,10 @@ class User extends Authenticatable {
         };
     }
 
+    public function full_name(): string {
+        return "$this->first_name $this->last_name";
+    }
+
     public function organization(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
         return $this->belongsTo(Organization::class);
     }
