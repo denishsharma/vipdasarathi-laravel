@@ -1,7 +1,7 @@
-@extends('pages.teams.details.master', ['title' => ' - Overview', 'team' => $team])
+@extends('pages.teams.details.master', ['title' => ' - Members', 'team' => $team])
 
 @section('breadcrumbs')
-    <x-navigation.breadcrumb.breadcrumb-item :active="true" label="Overview" />
+    <x-navigation.breadcrumb.breadcrumb-item :active="true" label="Tasks" />
 @endsection
 
 @section('team-detail-quick-actions')
@@ -11,6 +11,6 @@
 
 @section('team-detail-content')
     <div class="grid grid-cols-1 gap-5">
-        <livewire:tables.team.team-data-single-table :team="$team" />
+        <livewire:tables.team.team-members-signle-table :team="$team" />
     </div>
 @endsection

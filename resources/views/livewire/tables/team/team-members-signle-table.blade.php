@@ -1,15 +1,5 @@
-<div class="grid grid-cols-1 gap-5">
-    <div class="select-none rounded-lg border border-gray-200 px-5 mt-5">
-        <div class="text-sm font-medium text-center text-gray-500">
-            <ul x-data="{ tab: 'members' }" class="flex flex-wrap -mb-px gap-2 justify-center">
-                <li>
-                    <a @click="tab='members';" :class="tab=='members' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">Members</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="overflow-x-auto border border-gray-200 rounded-lg soft-scrollbar">
+@if($team->users()->count() > 0)
+    <div class="h-fit overflow-x-auto border border-gray-200 rounded-lg soft-scrollbar">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
             <thead class="text-xs font-normal text-gray-500 uppercase bg-stone-100">
             <tr>
@@ -47,6 +37,12 @@
             @endforeach
             </tbody>
         </table>
-
     </div>
-</div>
+@else
+    <div class="h-fit border border-dashed border-gray-200 rounded-md p-5 text-center flex flex-col justify-center items-center">
+        <h4 class="text-gray-700 font-semibold text-lg">No Members</h4>
+        <span class="w-8/12 text-sm text-gray-500 mt-2 mb-1">
+            There are no members in this team. You can add members by clicking on "Manage Members" button.
+        </span>
+    </div>
+@endif

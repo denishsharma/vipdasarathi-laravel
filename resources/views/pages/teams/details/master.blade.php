@@ -23,6 +23,8 @@
         <x-slot:sidebar>
             <x-navigation.sidebar-wrapper>
                 <x-navigation.sidebar.sidebar-item icon="cube" label="Overview" :href="route('team.view.overview', ['slug' => $team->slug])" :active="request()->routeIs('team.view.overview')" />
+                <x-navigation.sidebar.sidebar-item icon="collection" label="Tasks" :href="route('team.view.tasks', ['slug' => $team->slug])" :active="request()->routeIs('team.view.tasks')" />
+                <x-navigation.sidebar.sidebar-item icon="user" label="Members" :href="route('team.view.members', ['slug' => $team->slug])" :active="request()->routeIs('team.view.members')" />
             </x-navigation.sidebar-wrapper>
         </x-slot:sidebar>
 
