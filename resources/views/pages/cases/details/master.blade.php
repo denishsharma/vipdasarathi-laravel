@@ -12,6 +12,8 @@
         </div>
         <div>
             <div class="flex justify-end gap-2">
+                <x-button sm label="Edit Details" @click="Livewire.emit('openModal', 'modals.edit-case-details', {{ json_encode(['actionType' => 'edit', 'case' => $case]) }})" />
+                <x-button sm label="Add Task" @click="Livewire.emit('openModal', 'modals.edit-task-details', {{ json_encode(['actionType' => 'add', 'case' => $case, 'taskCategory' => 'general']) }})" />
                 @yield('case-detail-quick-actions')
             </div>
         </div>
