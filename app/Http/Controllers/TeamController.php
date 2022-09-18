@@ -48,8 +48,41 @@ class TeamController extends Controller {
                        )->get();
     }
 
+    public function getAllTeam(Request $request) {
+        return Team::query()
+                   ->select(['name', 'team_type_id', 'slug'])
+                   ->where('status', '=', 'active')
+                   ->orderByDesc('created_at')
+                   ->when(
+                       $request->has('search'),
+                       fn(Builder $query) => $query
+                           ->where('name', 'like', '%' . $request->input('search') . '%')
+                           ->orWhere('slug', 'like', '%' . $request->input('search') . '%')
+                   )
+                   ->when(
+                       $request->exists('selected'),
+                       fn(Builder $query) => $query->whereIn('slug', $request->input('selected', [])),
+                   )
+                   ->get()
+                   ->map(fn($team) => [
+                       'name' => $team->name,
+                       'slug' => $team->slug,
+                       'team_type' => TeamType::findOrFail($team->team_type_id)->name,
+                   ]);
+    }
+
     public function showTeamDetailsOverview($slug) {
         $team = Team::with('team_type', 'users')->whereSlug($slug)->firstOrFail();
         return view('pages.teams.details.overview.index', compact('team'));
+    }
+
+    public function showTeamDetailsTasks($slug) {
+        $team = Team::with('team_type', 'users')->whereSlug($slug)->firstOrFail();
+        return view('pages.teams.details.tasks.index', compact('team'));
+    }
+
+    public function showTeamDetailsMembers($slug) {
+        $team = Team::with('team_type', 'users')->whereSlug($slug)->firstOrFail();
+        return view('pages.teams.details.members.index', compact('team'));
     }
 }
