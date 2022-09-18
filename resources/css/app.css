@@ -12,6 +12,22 @@
         @apply w-4 h-4;
     }
 
+    .is-button-group-item {
+        @apply select-none cursor-pointer w-full bg-white text-gray-500 flex gap-2 items-center px-4 py-2.5 transition-colors hover:bg-gray-50;
+    }
+
+    .is-button-group-item > span {
+        @apply text-sm text-gray-700;
+    }
+
+    .active-button-group-item {
+        @apply select-none cursor-pointer w-full bg-gray-50 text-gray-500 flex gap-2 items-center px-4 py-2.5 transition-colors;
+    }
+
+    .active-button-group-item > span {
+        @apply text-sm font-medium text-gray-700;
+    }
+
     .is-setting-button {
         @apply w-full border-transparent border rounded-lg bg-white text-gray-500 flex gap-2 items-center px-3 py-2 transition-colors hover:bg-gray-50 hover:border-gray-200;
     }
