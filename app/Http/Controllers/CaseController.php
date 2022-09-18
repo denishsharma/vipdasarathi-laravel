@@ -60,4 +60,14 @@ class CaseController extends Controller {
         $case = DisasterCase::with('disaster_type')->whereSlug($slug)->firstOrFail();
         return view('pages.cases.details.overview.index', compact('case'));
     }
+
+    public function showCaseDetailsTeams($slug) {
+        $case = DisasterCase::with('disaster_type')->whereSlug($slug)->firstOrFail();
+        return view('pages.cases.details.teams.list.index', compact('case'));
+    }
+
+    public function showCaseDetailsTasks($slug) {
+        $case = DisasterCase::with('disaster_type')->whereSlug($slug)->firstOrFail();
+        return view('pages.cases.details.tasks.list.index', compact('case'));
+    }
 }

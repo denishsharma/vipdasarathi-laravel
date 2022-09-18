@@ -24,4 +24,12 @@ class SettingController extends Controller {
     public function team_type() {
         return view('pages.settings.team-types.index');
     }
+
+    public function task_type() {
+        return view('pages.settings.task-types.index');
+    }
+
+    public function activity_type() {
+        return view('pages.settings.activity-types.index');
+    }
 }
