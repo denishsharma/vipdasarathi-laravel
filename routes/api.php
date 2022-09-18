@@ -23,3 +23,6 @@ Route::get('/disaster-type/all', [\App\Http\Controllers\CaseController::class, '
 Route::get('/states/all', [\App\Http\Controllers\AddressController::class, 'getAllState'])->name('api.states.all');
 Route::get('/team-type/all', [\App\Http\Controllers\TeamController::class, 'getAllTeamType'])->name('api.team-type.all');
 Route::get('/user/all', [\App\Http\Controllers\UserController::class, 'getAllUser'])->name('api.user.all');
+Route::get('/task-type/all', [\App\Http\Controllers\TaskController::class, 'getAllTaskType'])->name('api.task-type.all');
+Route::get('/team/all', [\App\Http\Controllers\TeamController::class, 'getAllTeam'])->name('api.team.all');
+Route::get('/activity-type/all', [\App\Http\Controllers\ActivityController::class, 'getAllActivityType'])->name('api.activity-type.all');
