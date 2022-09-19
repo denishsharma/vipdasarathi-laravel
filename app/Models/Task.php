@@ -22,6 +22,7 @@ class Task extends Model {
         'disaster_case_id',
         'task_type_id',
         'task_category',
+        'task_of_id',
         'status',
     ];
 
@@ -47,7 +48,7 @@ class Task extends Model {
         return match ($this->task_category) {
             'general' => 'General Task',
             'demands' => 'Demand of Resources',
-            'tickers' => 'Tickets',
+            'tickets' => 'Tickets',
         };
     }
 
@@ -67,7 +68,19 @@ class Task extends Model {
         return $this->morphMany(Activity::class, 'activityable');
     }
 
+    public function task_of(): ?\Illuminate\Database\Eloquent\Relations\BelongsTo {
+        if ($this->task_category === 'tickets') {
+            return $this->belongsTo(Ticket::class, 'task_of_id');
+        }
+
+        return null;
+    }
+
     public function teams(): \Illuminate\Database\Eloquent\Relations\BelongsToMany {
         return $this->belongsToMany(Team::class);
+    }
+
+    public function tickets(): \Illuminate\Database\Eloquent\Relations\MorphMany {
+        return $this->morphMany(Ticket::class, 'ticketable');
     }
 }

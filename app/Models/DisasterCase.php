@@ -57,4 +57,8 @@ class DisasterCase extends Model {
     public function teams(): \Illuminate\Database\Eloquent\Relations\BelongsToMany {
         return $this->belongsToMany(Team::class);
     }
+
+    public function has_many_tickets(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(Ticket::class);
+    }
 }

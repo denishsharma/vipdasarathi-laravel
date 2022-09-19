@@ -27,7 +27,7 @@
             option-description="email"
             option-value="slug"
             hide-empty-message
-            multiselect
+            :clearable="false"
             wire:model="updateBy" />
 
         <x-select

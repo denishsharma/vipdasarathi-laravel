@@ -26,3 +26,4 @@ Route::get('/user/all', [\App\Http\Controllers\UserController::class, 'getAllUse
 Route::get('/task-type/all', [\App\Http\Controllers\TaskController::class, 'getAllTaskType'])->name('api.task-type.all');
 Route::get('/team/all', [\App\Http\Controllers\TeamController::class, 'getAllTeam'])->name('api.team.all');
 Route::get('/activity-type/all', [\App\Http\Controllers\ActivityController::class, 'getAllActivityType'])->name('api.activity-type.all');
+Route::get('/task/{caseSlug}/all', [\App\Http\Controllers\TaskController::class, 'getAllCaseTask'])->name('api.task.case.all');

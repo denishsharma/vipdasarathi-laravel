@@ -44,7 +44,9 @@
                         <a wire:click="changeTab('teams')" :class="tab=='teams' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">Teams</a>
                     </li>
                     <li>
-                        <a wire:click="changeTab('tickets')" :class="tab=='tickets' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">Tickets</a>
+                        <a wire:click="changeTab('tickets')" :class="tab=='tickets' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">
+                            Open Tickets
+                        </a>
                     </li>
                     <li>
                         <a wire:click="changeTab('attachments')" :class="tab=='attachments' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">Attachments</a>
@@ -56,9 +58,9 @@
         @if ($currentTab == 'teams')
             <livewire:tables.task.task-teams-single-table :task="$task" />
         @elseif ($currentTab == 'tickets')
-            tickets
+            <livewire:tables.task.task-tickets-single-table :headless="true" :task="$task" status="open" />
         @elseif($currentTab == 'attachments')
-            <livewire:tables.task.task-attachments-single-table wire:key="case-attachments" :task="$task" />
+            <livewire:tables.task.task-attachments-single-table :task="$task" />
         @endif
     </div>
 </div>

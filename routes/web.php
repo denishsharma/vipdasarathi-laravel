@@ -39,7 +39,7 @@ Route::group(['prefix' => 'case'], function () {
     Route::get('{slug}/demands', [\App\Http\Controllers\CaseController::class, 'showCaseDetailsOverview'])->name('case.view.demands');
     Route::get('{slug}/teams', [\App\Http\Controllers\CaseController::class, 'showCaseDetailsTeams'])->name('case.view.teams');
     Route::get('{slug}/tasks', [\App\Http\Controllers\CaseController::class, 'showCaseDetailsTasks'])->name('case.view.tasks');
-    Route::get('{slug}/tickets', [\App\Http\Controllers\CaseController::class, 'showCaseDetailsOverview'])->name('case.view.tickets');
+    Route::get('{slug}/tickets', [\App\Http\Controllers\CaseController::class, 'showCaseDetailsTickets'])->name('case.view.tickets');
     Route::get('{slug}/shelters', [\App\Http\Controllers\CaseController::class, 'showCaseDetailsOverview'])->name('case.view.shelters');
 });
 
@@ -48,7 +48,7 @@ Route::group(['prefix' => 'task'], function () {
     Route::get('{slug}/activities', [\App\Http\Controllers\TaskController::class, 'showTaskDetailsActivities'])->name('task.view.activities');
     Route::get('{slug}/teams', [\App\Http\Controllers\TaskController::class, 'showTaskDetailsTeams'])->name('task.view.teams');
     Route::get('{slug}/attachments', [\App\Http\Controllers\TaskController::class, 'showTaskDetailsAttachments'])->name('task.view.attachments');
-    Route::get('{slug}/tickets', [\App\Http\Controllers\TaskController::class, 'showTaskDetailsOverview'])->name('task.view.tickets');
+    Route::get('{slug}/tickets', [\App\Http\Controllers\TaskController::class, 'showTaskDetailsTickets'])->name('task.view.tickets');
 });
 
 Route::group(['prefix' => 'teams'], function () {

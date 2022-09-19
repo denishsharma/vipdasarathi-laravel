@@ -20,6 +20,7 @@
                 <x-button sm label="Manage Attachments" @click="Livewire.emit('openModal', 'modals.edit-task-details', {{ json_encode(['actionType' => 'manage-attachments', 'case' => $task->disaster_case, 'task' => $task]) }})" />
                 @yield('task-detail-quick-actions')
                 <x-button sm positive label="Add Update" @click="Livewire.emit('openModal', 'modals.edit-task-update-details', {{ json_encode(['actionType' => 'add', 'task' => $task]) }})" />
+                <x-button sm positive label="Add Ticket" @click="Livewire.emit('openModal', 'modals.edit-ticket-details', {{ json_encode(['actionType' => 'add', 'case' =>  $task->disaster_case, 'task' => $task]) }})" />
             </div>
         </div>
     </x-navigation.attached-navbar>

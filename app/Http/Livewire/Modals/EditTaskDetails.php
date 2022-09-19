@@ -78,19 +78,7 @@ class EditTaskDetails extends ModalComponent {
             'priority' => $this->priority,
         ]);
 
-        $task->teams()->sync($this->teams->pluck('id'));
-        $this->case->teams()->sync($this->teams->pluck('id'), false);
-
-        if (!empty($this->attachments)) {
-            foreach ($this->attachments as $attachment) {
-                $attachment->store('attachments', 'public');
-                $task->attachments()->create([
-                    'slug' => \Str::slug($attachment->getClientOriginalName() . ' ' . now()),
-                    'filename' => $attachment->hashName(),
-                    'original_filename' => $attachment->getClientOriginalName(),
-                ]);
-            }
-        }
+        $this->sync_team_and_attachments($task);
 
         $this->emit('taskUpdated', $task);
         $this->emit('refreshCaseTasksTable');
@@ -111,19 +99,7 @@ class EditTaskDetails extends ModalComponent {
             'task_category' => $this->taskCategory,
         ]);
 
-        $task->teams()->sync($this->teams->pluck('id'));
-        $this->case->teams()->sync($this->teams->pluck('id'), false);
-
-        if (!empty($this->attachments)) {
-            foreach ($this->attachments as $attachment) {
-                $attachment->store('attachments', 'public');
-                $task->attachments()->create([
-                    'slug' => \Str::slug($attachment->getClientOriginalName() . ' ' . now()),
-                    'filename' => $attachment->hashName(),
-                    'original_filename' => $attachment->getClientOriginalName(),
-                ]);
-            }
-        }
+        $this->sync_team_and_attachments($task);
 
         $this->emit('taskAdded', $task);
         $this->emit('refreshCaseTasksTable');
@@ -167,5 +143,27 @@ class EditTaskDetails extends ModalComponent {
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application {
         return view('livewire.modals.edit-task-details');
+    }
+
+    /**
+     * @param Task $task
+     *
+     * @return void
+     */
+    public function sync_team_and_attachments(Task $task): void {
+        $task->teams()->sync($this->teams->pluck('id'));
+        $case = DisasterCase::whereSlug($this->case['slug'])->firstOrFail();
+        $case->teams()->sync($this->teams->pluck('id'), false);
+
+        if (!empty($this->attachments)) {
+            foreach ($this->attachments as $attachment) {
+                $attachment->store('attachments', 'public');
+                $task->attachments()->create([
+                    'slug' => \Str::slug($attachment->getClientOriginalName() . ' ' . now()),
+                    'filename' => $attachment->hashName(),
+                    'original_filename' => $attachment->getClientOriginalName(),
+                ]);
+            }
+        }
     }
 }
