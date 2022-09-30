@@ -7,13 +7,13 @@
                 </div>
                 <div class="hidden sm:block sm:ml-6 select-none">
                     <div class="flex space-x-2" x-data="{ active: @entangle('active') }">
-                        <a href="{{ route('home') }}" :class="active === 'home' ? 'active-navbar-button' : 'is-navbar-button'">Home</a>
+                        {{--                        <a href="{{ route('home') }}" :class="active === 'home' ? 'active-navbar-button' : 'is-navbar-button'">Home</a>--}}
                         <a href="{{ route('cases.index') }}" :class="active === 'case' ? 'active-navbar-button' : 'is-navbar-button'">Cases</a>
-                        <a href="#" :class="active === 'relief' ? 'active-navbar-button' : 'is-navbar-button'">Relief
-                                                                                                               Centres</a>
+                        {{--                        <a href="#" :class="active === 'relief' ? 'active-navbar-button' : 'is-navbar-button'">Relief--}}
+                        {{--                        Centres</a>--}}
                         <a href="{{ route('teams.index') }}" :class="active === 'team' ? 'active-navbar-button' : 'is-navbar-button'">Teams</a>
                         {{--                        <a href="#" :class="active === 'volunteer' ? 'active-navbar-button' : 'is-navbar-button'">Volunteers</a>--}}
-                        <a href="#" :class="active === 'ticket' ? 'active-navbar-button' : 'is-navbar-button'">Tickets</a>
+                        {{--                        <a href="#" :class="active === 'ticket' ? 'active-navbar-button' : 'is-navbar-button'">Tickets</a>--}}
                         <a href="{{ route('settings.index') }}" :class="active === 'setting' ? 'active-navbar-button' : 'is-navbar-button'">Settings</a>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                         <x-dropdown>
                             <x-slot name="trigger">
                                 <div
-                                        class="flex items-center py-2 px-2 hover:border-gray-200 border-transparent transition-colors border rounded-lg hover:bg-white text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="flex items-center py-2 px-2 hover:border-gray-200 border-transparent transition-colors border rounded-lg hover:bg-white text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="pr-3">
                                         <div class="text-xs text-right font-semibold">{{ auth()->user()->full_name() }}</div>
                                         <div class="font-normal text-right text-xs text-gray-500">{{ auth()->user()->email }}</div>

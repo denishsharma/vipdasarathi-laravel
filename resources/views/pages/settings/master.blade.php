@@ -21,9 +21,9 @@
     <x-layout.sidebar-main>
         <x-slot:sidebar>
             <x-navigation.sidebar-wrapper>
-                <x-navigation.sidebar.sidebar-item icon="identification" label="My Profile" :active="request()->routeIs('settings.index')" />
+                {{--                <x-navigation.sidebar.sidebar-item icon="identification" label="My Profile" :active="request()->routeIs('settings.index')" />--}}
                 <x-navigation.sidebar.sidebar-group label="Manage">
-                    <x-navigation.sidebar.sidebar-item icon="office-building" label="Organizations" :href="route('settings.organization.index')" :active="request()->routeIs('settings.organization.index')" />
+                    <x-navigation.sidebar.sidebar-item icon="office-building" label="Organizations" :href="route('settings.organization.index')" :active="request()->routeIs('settings.organization.index') || request()->routeIs('settings.index')" />
                     <x-navigation.sidebar.sidebar-item icon="user" label="Users" :href="route('settings.user.index')" :active="request()->routeIs('settings.user.index')" />
                 </x-navigation.sidebar.sidebar-group>
                 <x-navigation.sidebar.sidebar-group label="Master">
@@ -31,6 +31,7 @@
                     <x-navigation.sidebar.sidebar-item icon="collection" label="Team Types" :href="route('settings.team-type.index')" :active="request()->routeIs('settings.team-type.index')" />
                     <x-navigation.sidebar.sidebar-item icon="collection" label="Task Types" :href="route('settings.task-type.index')" :active="request()->routeIs('settings.task-type.index')" />
                     <x-navigation.sidebar.sidebar-item icon="collection" label="Activity Types" :href="route('settings.activity-type.index')" :active="request()->routeIs('settings.activity-type.index')" />
+                    <x-navigation.sidebar.sidebar-item icon="collection" label="Demand Types" :href="route('settings.demand-type.index')" :active="request()->routeIs('settings.demand-type.index')" />
                 </x-navigation.sidebar.sidebar-group>
             </x-navigation.sidebar-wrapper>
         </x-slot:sidebar>

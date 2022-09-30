@@ -61,6 +61,10 @@ class DisasterCase extends Model {
         return $this->belongsToMany(Team::class);
     }
 
+    public function demands(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(Demand::class);
+    }
+
     public function activities(): \Illuminate\Database\Eloquent\Relations\MorphMany {
         return $this->morphMany(Activity::class, 'activityable');
     }

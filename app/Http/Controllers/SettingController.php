@@ -32,4 +32,8 @@ class SettingController extends Controller {
     public function activity_type() {
         return view('pages.settings.activity-types.index');
     }
+
+    public function demand_type() {
+        return view('pages.settings.demand-types.index');
+    }
 }

@@ -61,10 +61,10 @@
         </table>
     </div>
 
-    <div class="grid grid-cols-6 gap-2">
-        <div class="border border-gray-200 rounded-lg px-5 py-3">
-            <div class="text-xs uppercase font-medium text-gray-500 mb-1">Total Victims</div>
-            <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['total'] }}</div>
+        <div class="grid grid-cols-5 gap-2">
+            <div class="border border-gray-200 rounded-lg px-5 py-3">
+                <div class="text-xs uppercase font-medium text-gray-500 mb-1">Total Victims</div>
+                <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['total'] }}</div>
         </div>
         <div class="border border-gray-200 rounded-lg px-5 py-3">
             <div class="text-xs uppercase font-medium text-gray-500 mb-1">Deaths</div>
@@ -81,10 +81,6 @@
         <div class="border border-gray-200 rounded-lg px-5 py-3">
             <div class="text-xs uppercase font-medium text-gray-500 mb-1">Missing</div>
             <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['missing'] }}</div>
-        </div>
-        <div class="border border-gray-200 rounded-lg px-5 py-3">
-            <div class="text-xs uppercase font-medium text-gray-500 mb-1">Shelters</div>
-            <div class="text-gray-800 font-semibold text-xl">290</div>
         </div>
     </div>
 

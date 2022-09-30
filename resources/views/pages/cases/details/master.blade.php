@@ -14,6 +14,7 @@
             <div class="flex justify-end gap-2">
                 <x-button sm label="Edit Details" @click="Livewire.emit('openModal', 'modals.edit-case-details', {{ json_encode(['actionType' => 'edit', 'case' => $case]) }})" />
                 <x-button sm label="Add Task" @click="Livewire.emit('openModal', 'modals.edit-task-details', {{ json_encode(['actionType' => 'add', 'case' => $case, 'taskCategory' => 'general']) }})" />
+                <x-button sm label="Add Demand" @click="Livewire.emit('openModal', 'modals.edit-demand-details', {{ json_encode(['actionType' => 'add', 'case' => $case]) }})" />
                 @yield('case-detail-quick-actions')
             </div>
         </div>
@@ -30,7 +31,7 @@
                     <x-navigation.sidebar.sidebar-item icon="user-group" label="Teams" :href="route('case.view.teams', ['slug' => $case->slug])" :active="request()->routeIs('case.view.teams')" />
                     <x-navigation.sidebar.sidebar-item icon="collection" label="Tasks" :href="route('case.view.tasks', ['slug' => $case->slug])" :active="request()->routeIs('case.view.tasks')" />
                     <x-navigation.sidebar.sidebar-item icon="ticket" label="Tickets" :href="route('case.view.tickets', ['slug' => $case->slug])" :active="request()->routeIs('case.view.tickets')" />
-                    <x-navigation.sidebar.sidebar-item icon="home" label="Shelters" :href="route('case.view.shelters', ['slug' => $case->slug])" :active="request()->routeIs('case.view.shelters')" />
+                    {{--                    <x-navigation.sidebar.sidebar-item icon="home" label="Shelters" :href="route('case.view.shelters', ['slug' => $case->slug])" :active="request()->routeIs('case.view.shelters')" />--}}
                 </x-navigation.sidebar.sidebar-group>
             </x-navigation.sidebar-wrapper>
         </x-slot:sidebar>

@@ -26,7 +26,7 @@ class LoginForm extends Component {
         ], $this->rememberMe);
 
         if ($authAttempt) {
-            $this->redirect(route('home'));
+            $this->redirect(route('cases.index'));
         } else {
             $this->notification()->error('Login failed', 'Invalid credentials');
         }

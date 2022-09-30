@@ -22,13 +22,14 @@ Route::get('/', function () {
 })->middleware('auth')->name('home');
 
 Route::group(['prefix' => 'settings', 'middleware' => 'auth'], function () {
-    Route::get('/', [\App\Http\Controllers\SettingController::class, 'index'])->name('settings.index');
+    Route::get('/', [\App\Http\Controllers\SettingController::class, 'organization'])->name('settings.index');
     Route::get('organization', [\App\Http\Controllers\SettingController::class, 'organization'])->name('settings.organization.index');
     Route::get('user', [\App\Http\Controllers\SettingController::class, 'user'])->name('settings.user.index');
     Route::get('disaster_type', [\App\Http\Controllers\SettingController::class, 'disaster_type'])->name('settings.disaster-type.index');
     Route::get('team_type', [\App\Http\Controllers\SettingController::class, 'team_type'])->name('settings.team-type.index');
     Route::get('task_type', [\App\Http\Controllers\SettingController::class, 'task_type'])->name('settings.task-type.index');
     Route::get('activity_type', [\App\Http\Controllers\SettingController::class, 'activity_type'])->name('settings.activity-type.index');
+    Route::get('demand_type', [\App\Http\Controllers\SettingController::class, 'demand_type'])->name('settings.demand-type.index');
 });
 
 Route::group(['prefix' => 'cases', 'middleware' => 'auth'], function () {

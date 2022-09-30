@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder {
             TeamTypeSeeder::class,
             TaskTypeSeeder::class,
             ActivityTypeSeeder::class,
+            DemandTypeSeeder::class,
         ];
 
         $this->call($seeders);
