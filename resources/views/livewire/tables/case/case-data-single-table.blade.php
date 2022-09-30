@@ -65,16 +65,16 @@
             <div class="border border-gray-200 rounded-lg px-5 py-3">
                 <div class="text-xs uppercase font-medium text-gray-500 mb-1">Total Victims</div>
                 <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['total'] }}</div>
-        </div>
-        <div class="border border-gray-200 rounded-lg px-5 py-3">
-            <div class="text-xs uppercase font-medium text-gray-500 mb-1">Deaths</div>
-            <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['deaths'] }}</div>
-        </div>
-        <div class="border border-gray-200 rounded-lg px-5 py-3">
-            <div class="text-xs uppercase font-medium text-gray-500 mb-1">Rescued</div>
-            <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['rescued'] }}</div>
-        </div>
-        <div class="border border-gray-200 rounded-lg px-5 py-3">
+            </div>
+            <div class="border border-gray-200 rounded-lg px-5 py-3">
+                <div class="text-xs uppercase font-medium text-gray-500 mb-1">Deaths</div>
+                <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['deaths'] }}</div>
+            </div>
+            <div class="border border-gray-200 rounded-lg px-5 py-3">
+                <div class="text-xs uppercase font-medium text-gray-500 mb-1">Rescued</div>
+                <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['rescued'] }}</div>
+            </div>
+            <div class="border border-gray-200 rounded-lg px-5 py-3">
             <div class="text-xs uppercase font-medium text-gray-500 mb-1">Injured</div>
             <div class="text-gray-800 font-semibold text-xl">{{ $case->disaster_case_metadata->get_casualties()['injured'] }}</div>
         </div>
