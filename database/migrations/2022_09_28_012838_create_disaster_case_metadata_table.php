@@ -11,15 +11,12 @@ return new class extends Migration {
      * @return void
      */
     public function up(): void {
-        Schema::create('disaster_cases', function (Blueprint $table) {
+        Schema::create('disaster_case_metadata', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique()->nullable();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->dateTime('happened_at')->nullable();
-            $table->unsignedBigInteger('disaster_type_id')->nullable();
-            $table->string('priority')->nullable();
-            $table->string('status')->default('pending');
+            $table->unsignedBigInteger('disaster_case_id')->nullable();
+            $table->json('casualties')->nullable();
+            $table->json('raw')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +28,6 @@ return new class extends Migration {
      * @return void
      */
     public function down(): void {
-        Schema::dropIfExists('disaster_cases');
+        Schema::dropIfExists('disaster_case_metadata');
     }
 };

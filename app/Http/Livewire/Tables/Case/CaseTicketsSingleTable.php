@@ -8,6 +8,7 @@ use Livewire\Component;
 class CaseTicketsSingleTable extends Component {
     public $case;
 
+    public $headerLess = false;
     public $status = 'all';
 
     public $taskSlug;

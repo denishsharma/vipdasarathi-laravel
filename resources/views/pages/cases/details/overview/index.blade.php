@@ -5,9 +5,11 @@
 @endsection
 
 @section('case-detail-quick-actions')
-    <x-button sm label="Update Casualties" @click="Livewire.emit('openModal', 'modals.edit-organization-details', {{ json_encode(['actionType' => 'edit', 'case' => $case]) }})" />
+    <x-button sm label="Update Casualties" @click="Livewire.emit('openModal', 'modals.edit-case-casualties-details', {{ json_encode(['case' => $case]) }})" />
 @endsection
 
 @section('case-detail-content')
-
+    <div class="grid grid-cols-1 gap-5">
+        <livewire:tables.case.case-data-single-table :case="$case" />
+    </div>
 @endsection

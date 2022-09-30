@@ -101,7 +101,16 @@ class EditTaskDetails extends ModalComponent {
 
         $this->sync_team_and_attachments($task);
 
+        DisasterCase::whereSlug($this->case['slug'])->firstOrFail()->activities()->create([
+            'slug' => now(),
+            'subject' => 'New task added "' . $task->subject . '"',
+            'description' => $task->description,
+            'user_id' => auth()->user()->id,
+            'activity_category' => 'details',
+        ]);
+
         $this->emit('taskAdded', $task);
+        $this->emit('caseActivityUpdated');
         $this->emit('refreshCaseTasksTable');
         $this->closeModal();
     }

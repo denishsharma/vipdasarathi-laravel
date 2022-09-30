@@ -10,6 +10,7 @@ use App\Models\DisasterCase;
 class CaseTasksSingleTable extends Component {
     use Actions;
 
+    public $headerLess = false;
     public $heading;
     public $description;
 

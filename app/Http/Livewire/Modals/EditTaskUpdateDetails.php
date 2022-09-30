@@ -87,14 +87,13 @@ class EditTaskUpdateDetails extends ModalComponent {
         if ($actionType == 'add') {
             $faker = \Faker\Factory::create('en_IN');
 
-            $randomUser = User::inRandomOrder()->first();
             $randomActivityType = ActivityType::inRandomOrder()->first();
 
             $this->fill([
                 'subject' => $faker->sentence(5),
                 'description' => $faker->paragraph(5),
                 'activityType' => $randomActivityType->slug,
-                'updateBy' => $randomUser->slug,
+                'updateBy' => auth()->user()->slug,
                 'activityCategory' => 'comment',
             ]);
         }

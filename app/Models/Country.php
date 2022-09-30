@@ -5,18 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Country extends Model {
+class Country extends Model
+{
     use SoftDeletes;
 
     protected $fillable = [
-        'id', 'name', 'status',
+        'id', 'name', 'status'
     ];
 
-    public function states() {
+    public function states()
+    {
         return $this->hasMany(State::class);
     }
 
-    public function cities() {
+    public function cities()
+    {
         return $this->hasManyThrough(City::class, State::class);
     }
 }

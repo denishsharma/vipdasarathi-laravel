@@ -2,8 +2,10 @@
 
 namespace App\Providers\DataProviders;
 
-abstract class StateProvider {
-    public static function data(): array {
+abstract class StateProvider
+{
+    public static function data(): array
+    {
         return [
             ['id' => '1', 'country_id' => '101', 'name' => 'andaman and nicobar islands'],
             ['id' => '2', 'country_id' => '101', 'name' => 'andhra pradesh'],
@@ -4124,7 +4126,7 @@ abstract class StateProvider {
             ['id' => '4117', 'country_id' => '246', 'name' => 'masvingo'],
             ['id' => '4118', 'country_id' => '246', 'name' => 'matabeleland north'],
             ['id' => '4119', 'country_id' => '246', 'name' => 'matabeleland south'],
-            ['id' => '4120', 'country_id' => '246', 'name' => 'midlands'],
+            ['id' => '4120', 'country_id' => '246', 'name' => 'midlands']
         ];
     }
 }

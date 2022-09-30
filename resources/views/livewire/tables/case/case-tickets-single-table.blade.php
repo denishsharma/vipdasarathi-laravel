@@ -1,28 +1,36 @@
-<div class="grid grid-cols-1 gap-5">
-    <x-select
-        label="Filter by Task"
-        placeholder="Select task to filter"
-        :async-data="route('api.task.case.all', ['caseSlug' => $case->slug])"
-        option-label="subject"
-        option-description="task_type"
-        option-value="slug"
-        wire:model="taskSlug" />
-
-    <div class="select-none rounded-lg border border-gray-200 px-5">
-        <div class="text-sm font-medium text-center text-gray-500">
-            <ul x-data="{ tab: @entangle('status') }" class="flex flex-wrap -mb-px gap-2 justify-center">
-                <li>
-                    <a wire:click="changeTab('all')" :class="tab=='all' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">All</a>
-                </li>
-                <li>
-                    <a wire:click="changeTab('open')" :class="tab=='open' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">Open</a>
-                </li>
-                <li>
-                    <a wire:click="changeTab('closed')" :class="tab=='closed' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">Closed</a>
-                </li>
-            </ul>
+<div class="grid grid-cols-1 @if($headerLess) gap-2 @else gap-5 @endif">
+    @if($headerLess)
+        <div class="h-fit border border-gray-200 rounded-lg px-4 py-4">
+            @endif
+            <x-select
+                label="Filter by Task"
+                placeholder="Select task to filter"
+                :async-data="route('api.task.case.all', ['caseSlug' => $case->slug])"
+                option-label="subject"
+                option-description="task_type"
+                option-value="slug"
+                wire:model="taskSlug" />
+            @if($headerLess)
         </div>
-    </div>
+    @endif
+
+    @if(!$headerLess)
+        <div class="select-none rounded-lg border border-gray-200 px-5">
+            <div class="text-sm font-medium text-center text-gray-500">
+                <ul x-data="{ tab: @entangle('status') }" class="flex flex-wrap -mb-px gap-2 justify-center">
+                    <li>
+                        <a wire:click="changeTab('all')" :class="tab=='all' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">All</a>
+                    </li>
+                    <li>
+                        <a wire:click="changeTab('open')" :class="tab=='open' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">Open</a>
+                    </li>
+                    <li>
+                        <a wire:click="changeTab('closed')" :class="tab=='closed' ? 'text-primary-600 border-primary-600' : 'border-transparent text-gray-700 hover:text-gray-600 hover:border-gray-300'" class="cursor-pointer inline-block py-2.5 px-3 rounded-t-lg border-b-2">Closed</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    @endif
 
     <div class="flex-auto h-fit overflow-x-auto border border-gray-200 rounded-lg soft-scrollbar">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto">
@@ -41,12 +49,12 @@
                 <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="py-2 px-5 text-gray-900 dark:text-white">
                         <div class="grid grid-rows-2 grid-cols-1 gap-0.4">
-                            <h4 class="text-sm font-medium text-gray-700">{{ \Str::limit($ticket->subject, 40) }}</h4>
+                            <h4 class="text-sm font-medium text-gray-700">{{ \Str::limit($ticket->subject, ($headerLess) ? 30 : 40) }}</h4>
                             <span class="text-xs font-regular text-gray-500">{{ Str::limit($ticket->ticketable->subject, 30) }}</span>
                         </div>
                     </td>
                     <td class="py-4 px-5">{{ $ticket->attachments()->count() }}</td>
-                    <td class="py-4 px-5">{{ $ticket->user->full_name() }}</td>
+                    <td class="py-4 px-5">{{ \Str::limit($ticket->user->full_name(), 20) }}</td>
                     <td class="py-4 px-5">{{ $ticket->status() }}</td>
                     <td class="py-4 px-5">
                         @if ($ticket->has_task())

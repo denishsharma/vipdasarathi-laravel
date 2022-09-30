@@ -20,7 +20,6 @@ class DisasterCase extends Model {
         'description',
         'happened_at',
         'disaster_type_id',
-        'case_meta_id',
         'priority',
         'status',
     ];
@@ -50,6 +49,10 @@ class DisasterCase extends Model {
         };
     }
 
+    public function disaster_case_metadata(): \Illuminate\Database\Eloquent\Relations\HasOne {
+        return $this->hasOne(DisasterCaseMetadata::class);
+    }
+
     public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany {
         return $this->hasMany(Task::class);
     }
@@ -58,7 +61,15 @@ class DisasterCase extends Model {
         return $this->belongsToMany(Team::class);
     }
 
+    public function activities(): \Illuminate\Database\Eloquent\Relations\MorphMany {
+        return $this->morphMany(Activity::class, 'activityable');
+    }
+
     public function has_many_tickets(): \Illuminate\Database\Eloquent\Relations\HasMany {
         return $this->hasMany(Ticket::class);
+    }
+
+    public function shelters(): \Illuminate\Database\Eloquent\Relations\HasMany {
+        return $this->hasMany(Shelter::class);
     }
 }

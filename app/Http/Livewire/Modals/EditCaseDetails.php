@@ -74,8 +74,17 @@ class EditCaseDetails extends ModalComponent {
             'happened_at' => $this->happenedAt,
         ]);
 
+        $case->activities()->create([
+            'slug' => now(),
+            'subject' => 'Case Details Updated',
+            'description' => 'Case details updated by ' . auth()->user()->full_name(),
+            'user_id' => auth()->user()->id,
+            'activity_category' => 'details',
+        ]);
+
         $this->emit('caseUpdated', $case);
         $this->emit('refreshCaseTable');
+        $this->emit('caseActivityUpdated');
         $this->closeModal();
     }
 
@@ -98,6 +107,17 @@ class EditCaseDetails extends ModalComponent {
             'city' => $this->city,
             'district' => $this->district,
             'state_id' => $this->state,
+        ]);
+
+        $case->disaster_case_metadata()->create([
+            'slug' => now(),
+            'casualties' => json_encode([
+                'total' => 0,
+                'deaths' => 0,
+                'rescued' => 0,
+                'injured' => 0,
+                'missing' => 0,
+            ]),
         ]);
 
         $this->emit('caseAdded', $case);

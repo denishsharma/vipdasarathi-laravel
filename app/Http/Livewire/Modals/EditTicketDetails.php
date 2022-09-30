@@ -166,7 +166,7 @@ class EditTicketDetails extends ModalComponent {
             $this->fill([
                 'subject' => $faker->sentence(5),
                 'description' => $faker->paragraph(3),
-                'issuedBy' => User::inRandomOrder()->first()->slug,
+                'issuedBy' => auth()->user()->slug,
             ]);
         }
     }

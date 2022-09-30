@@ -2,8 +2,10 @@
 
 namespace App\Providers\DataProviders;
 
-abstract class CountryProvider {
-    public static function data(): array {
+abstract class CountryProvider
+{
+    public static function data(): array
+    {
         return [
             ['id' => '1', 'name' => 'afghanistan'],
             ['id' => '2', 'name' => 'albania'],
@@ -250,7 +252,7 @@ abstract class CountryProvider {
             ['id' => '243', 'name' => 'yemen'],
             ['id' => '244', 'name' => 'yugoslavia'],
             ['id' => '245', 'name' => 'zambia'],
-            ['id' => '246', 'name' => 'zimbabwe'],
+            ['id' => '246', 'name' => 'zimbabwe']
         ];
     }
 }

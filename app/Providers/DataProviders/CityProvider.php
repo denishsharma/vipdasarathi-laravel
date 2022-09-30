@@ -2,8 +2,10 @@
 
 namespace App\Providers\DataProviders;
 
-abstract class CityProvider {
-    public static function data(): array {
+abstract class CityProvider
+{
+    public static function data(): array
+    {
         return [
             ['id' => '1', 'state_id' => '1', 'name' => 'bombuflat'],
             ['id' => '2', 'state_id' => '1', 'name' => 'garacharma'],
@@ -48318,7 +48320,7 @@ abstract class CityProvider {
             ['id' => '48311', 'state_id' => '3976', 'name' => 'weston'],
             ['id' => '48312', 'state_id' => '3976', 'name' => 'lewisburg'],
             ['id' => '48313', 'state_id' => '3976', 'name' => 'ravenswood'],
-            ['id' => '48314', 'state_id' => '3976', 'name' => 'summersville'],
+            ['id' => '48314', 'state_id' => '3976', 'name' => 'summersville']
         ];
     }
 }

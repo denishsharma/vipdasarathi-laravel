@@ -10,19 +10,21 @@ use App\Providers\DataProviders\CountryProvider;
 use App\Providers\DataProviders\StateProvider;
 use App\Providers\DataProviders\CityProvider;
 
-class CountryStateCitySeeder extends Seeder {
+class CountryStateCitySeeder extends Seeder
+{
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run() {
+    public function run()
+    {
         Country::insertOrIgnore(CountryProvider::data());
 
         State::insertOrIgnore(StateProvider::data());
 
         foreach (collect(CityProvider::data())->chunk(15000) as $chunkCities) {
-            City::insertOrIgnore($chunkCities->toArray());
+                City::insertOrIgnore($chunkCities->toArray());
         }
     }
 }

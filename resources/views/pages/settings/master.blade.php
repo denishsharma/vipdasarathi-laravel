@@ -21,7 +21,7 @@
     <x-layout.sidebar-main>
         <x-slot:sidebar>
             <x-navigation.sidebar-wrapper>
-                <x-navigation.sidebar.sidebar-item icon="cog" label="General" :active="request()->routeIs('settings.index')" />
+                <x-navigation.sidebar.sidebar-item icon="identification" label="My Profile" :active="request()->routeIs('settings.index')" />
                 <x-navigation.sidebar.sidebar-group label="Manage">
                     <x-navigation.sidebar.sidebar-item icon="office-building" label="Organizations" :href="route('settings.organization.index')" :active="request()->routeIs('settings.organization.index')" />
                     <x-navigation.sidebar.sidebar-item icon="user" label="Users" :href="route('settings.user.index')" :active="request()->routeIs('settings.user.index')" />

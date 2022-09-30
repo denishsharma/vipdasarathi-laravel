@@ -12,18 +12,18 @@
                         <a href="#" :class="active === 'relief' ? 'active-navbar-button' : 'is-navbar-button'">Relief
                                                                                                                Centres</a>
                         <a href="{{ route('teams.index') }}" :class="active === 'team' ? 'active-navbar-button' : 'is-navbar-button'">Teams</a>
-                        <a href="#" :class="active === 'volunteer' ? 'active-navbar-button' : 'is-navbar-button'">Volunteers</a>
+                        {{--                        <a href="#" :class="active === 'volunteer' ? 'active-navbar-button' : 'is-navbar-button'">Volunteers</a>--}}
                         <a href="#" :class="active === 'ticket' ? 'active-navbar-button' : 'is-navbar-button'">Tickets</a>
                         <a href="{{ route('settings.index') }}" :class="active === 'setting' ? 'active-navbar-button' : 'is-navbar-button'">Settings</a>
                     </div>
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <div class="flex gap-2">
-                    <x-button.circle flat icon="search" />
-                    <x-button.circle flat icon="bell" />
-                    <x-button.circle flat icon="home" />
-                </div>
+                {{--                <div class="flex gap-2">--}}
+                {{--                    <x-button.circle flat icon="search" />--}}
+                {{--                    <x-button.circle flat icon="bell" />--}}
+                {{--                    <x-button.circle flat icon="home" />--}}
+                {{--                </div>--}}
 
                 <!-- Profile dropdown -->
                 <div class="ml-4 relative">
@@ -31,20 +31,19 @@
                         <x-dropdown>
                             <x-slot name="trigger">
                                 <div
-                                    class="flex items-center py-2 px-2 hover:border-gray-200 border-transparent transition-colors border rounded-lg hover:bg-white text-gray-900 whitespace-nowrap dark:text-white">
+                                        class="flex items-center py-2 px-2 hover:border-gray-200 border-transparent transition-colors border rounded-lg hover:bg-white text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="pr-3">
-                                        <div class="text-xs text-right font-semibold">John Doe</div>
-                                        <div class="font-normal text-right text-xs text-gray-500">johndoe@gmail.com
-                                        </div>
+                                        <div class="text-xs text-right font-semibold">{{ auth()->user()->full_name() }}</div>
+                                        <div class="font-normal text-right text-xs text-gray-500">{{ auth()->user()->email }}</div>
                                     </div>
                                     <img class="w-8 h-8 rounded-full border border-gray-200"
-                                         src="https://ui-avatars.com/api/?name=John+Doe" alt="Jese image">
+                                         src="https://ui-avatars.com/api/?name={{ auth()->user()->full_name() }}" alt="{{ auth()->user()->full_name() }}">
                                 </div>
                             </x-slot>
 
                             <x-dropdown.header label="Settings">
                                 <x-dropdown.item label="Preferences" />
-                                <x-dropdown.item label="My Profile" />
+                                <x-dropdown.item label="Edit Profile" />
                             </x-dropdown.header>
 
                             <x-dropdown.item separator wire:click="logoutUser" label="Logout" />
